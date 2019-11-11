@@ -74,14 +74,20 @@ print(mult_vectors(listy, listy))
 
 def matrixAdd(a_list, b_list):
     new_list = []
+    if len(a_list) != len(b_list):
+        print("lists must be the same length")
+        return
     for i in range(len(a_list)):
         new_new = []
+        if len(a_list[i]) != len(b_list[i]):
+            print("lists must be the same length")
+            return
         for j in range(len(a_list[i])):
             new_new.append(a_list[i][j] + b_list[i][j])
         new_list.append(new_new)
     return new_list
 
 print("Matrix addition 2")
-print(matrixAdd([[1,2], [3,4]], [[5, 6], [7,8]]))
+print(matrixAdd([[1, 2], [3, 4]], [[5, 6], [7, 8]]))
 
 
