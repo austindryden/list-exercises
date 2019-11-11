@@ -78,16 +78,60 @@ def matrixAdd(a_list, b_list):
         print("lists must be the same length")
         return
     for i in range(len(a_list)):
-        new_new = []
+        new_row = []
         if len(a_list[i]) != len(b_list[i]):
             print("lists must be the same length")
             return
         for j in range(len(a_list[i])):
-            new_new.append(a_list[i][j] + b_list[i][j])
-        new_list.append(new_new)
+            new_row.append(a_list[i][j] + b_list[i][j])
+        new_list.append(new_row)
     return new_list
 
 print("Matrix addition 2")
 print(matrixAdd([[1, 2], [3, 4]], [[5, 6], [7, 8]]))
 
+def deDup(a_list):
+    new_list =[]
+    for i in a_list:
+        not_found = True
+        for j in new_list:
+            if i == j:
+                not_found = False
+        if not_found:
+            new_list.append(i)
+    return new_list
 
+print(deDup(listy))
+
+def dotProd(a_list, b_list):
+    tally = 0
+    for i in range(len(a_list)):
+        tally += a_list[i] * b_list[i]
+    return tally
+
+def matrixMult(a_list, b_list):
+    new_list = []
+    new_row_a = []
+    new_row_b = []
+    for i in range(len(a_list)):
+        #row i in matrix a
+        new_row_a = a_list[i]
+        
+        new_row = []
+        for j in range(len(a_list)):
+            new_row_b = []
+            # print(z)
+            #build a list for column z in matrix b
+            for b_row in b_list:
+                new_row_b.append(b_row[j])
+            # print(new_row_b)
+            new_row.append(dotProd(new_row_a, new_row_b))
+
+        new_list.append(new_row)
+        new_row = []
+    return(new_list)
+
+print("Matrix Multiplication")
+print(matrixMult([[1, 7], [2, 4], [3,3]], [[3, 3, 5], [5, 2, 3]]))
+            
+                
