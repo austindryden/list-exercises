@@ -103,28 +103,31 @@ def deDup(a_list):
 
 print(deDup(listy))
 
-def dotProd(a_list, b_list):
+def dotProd(a_list, b_list): #returns the dot product of 2 lists of equal length
     tally = 0
     for i in range(len(a_list)):
         tally += a_list[i] * b_list[i]
     return tally
 
-def matrixMult(a_list, b_list):
+def column(list, i): #returns column i in a matrix as a list
+    new_list = []
+    for row in list:
+        new_list.append(row[i])
+    return new_list
+
+def matrixMult(a_list, b_list): #returns a 2d list(matrix) that is a product of the 2d lists(matricies) passed
+    if (len(a_list[0])) != len(b_list):
+        print("matricies must be multipliable")
+        return
     new_list = []
     new_row_a = []
     new_row_b = []
     for i in range(len(a_list)):
         #row i in matrix a
         new_row_a = a_list[i]
-        
         new_row = []
-        for j in range(len(a_list)):
-            new_row_b = []
-            # print(z)
-            #build a list for column z in matrix b
-            for b_row in b_list:
-                new_row_b.append(b_row[j])
-            # print(new_row_b)
+        for j in range(len(b_list[0])):
+            new_row_b = column(b_list, j)
             new_row.append(dotProd(new_row_a, new_row_b))
 
         new_list.append(new_row)
@@ -132,6 +135,6 @@ def matrixMult(a_list, b_list):
     return(new_list)
 
 print("Matrix Multiplication")
-print(matrixMult([[1, 7], [2, 4], [3,3]], [[3, 3, 5], [5, 2, 3]]))
+print(matrixMult([[1, 3], [2, 4], [2, 5]], [[1, 3, 2, 2], [2, 4, 5, 1]]))
             
                 
